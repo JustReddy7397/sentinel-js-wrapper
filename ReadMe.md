@@ -11,7 +11,7 @@ npm install sentinel-js-wrapper@latest
 
 // Everything here should be run ASYNCHRONOUSLY
 
-import { SentinelClient } from 'sentinel-js-wrapper'
+import SentinelClient from 'sentinel-js-wrapper'
 
 (async () => {
     const client = new SentinelClient("https://example.com/api/v1",

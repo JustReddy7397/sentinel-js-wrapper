@@ -2,14 +2,17 @@
   "name": "sentinel-js-wrapper",
   "version": "1.0.0",
   "description": "sentinel-js-wrapper, the API wrapper for Sentinel",
-
-  "main": "index.js",
+  "main": "dist/cjs/SentinelClient.js",
+  "types": "dist/types/SentinelClient.d.ts",
   "scripts": {
     "dev": "nodemon main.ts",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module CommonJS --outDir dist/cjs",
+    "build:types": "tsc --module ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "keywords": [],
   "author": "JustReddy",
