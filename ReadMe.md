@@ -1,3 +1,11 @@
+
+<p align="center">
+  <img src="https://img.shields.io/npm/dw/sentinel-wrapper-js?style=for-the-badge">
+  <img src="https://img.shields.io/npm/v/sentinel-wrapper-js?style=for-the-badge">
+  <img src="https://img.shields.io/github/forks/justreddy7397/sentinel-js-wrapper?style=for-the-badge">
+  <img src="https://img.shields.io/github/stars/justreddy7397/sentinel-js-wrapper?style=for-the-badge">
+</p>
+
 <p align="center">sentinel-js-wrapper, the API wrapper for Sentinel, allows you to easily make calls to Sentinel endpoints without writing the code for the connections and parsing the response yourself.</p>
 
 ## Installation
