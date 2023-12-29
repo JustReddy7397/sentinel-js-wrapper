@@ -9,8 +9,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "JustReddy",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/JustReddy7397/sentinel-js-wrapper/issues"
+  },
+  "homepage": "https://github.com/JustReddy7397/sentinel-js-wrapper#readme",
   "dependencies": {
     "@types/node": "^20.10.5",
     "@types/winreg": "^1.2.36",
