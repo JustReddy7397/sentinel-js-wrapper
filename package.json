@@ -1,5 +1,5 @@
 {
-  "name": "sentinel-js-wrapper",
+  "name": "sentinel-wrapper-js",
   "version": "1.0.0",
   "description": "sentinel-js-wrapper, the API wrapper for Sentinel",
   "main": "dist/cjs/SentinelClient.js",

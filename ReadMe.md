@@ -2,7 +2,7 @@
 
 ## Installation
 ```bash
-npm install sentinel-js-wrapper@latest
+npm install sentinel-wrapper-js@latest
 ```
 > :warning: **The wrapper version is not necessarily the same as your Sentinel server version. For example, the wrapper may be on version 1.0.0 while your server is on version 1.4.0**
 
@@ -11,7 +11,7 @@ npm install sentinel-js-wrapper@latest
 
 // Everything here should be run ASYNCHRONOUSLY
 
-import SentinelClient from 'sentinel-js-wrapper'
+import SentinelClient from 'sentinel-wrapper-js'
 
 (async () => {
     const client = new SentinelClient("https://example.com/api/v1",
