@@ -34,7 +34,6 @@ class ResponseDecrypter {
         this.secretKey = secretKey;
     }
     decrypt(encrypted) {
-        console.log(encrypted);
         return crypto.AES.decrypt(encrypted, this.secretKey).toString(crypto.enc.Utf8);
     }
 }

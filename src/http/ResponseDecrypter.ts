@@ -16,7 +16,6 @@ export default class ResponseDecrypter {
     }
 
     decrypt(encrypted: string) : string {
-        console.log(encrypted)
         return crypto.AES.decrypt(encrypted, this.secretKey).toString(crypto.enc.Utf8)
     }
 
