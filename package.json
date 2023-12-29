@@ -1,0 +1,29 @@
+{
+  "name": "sentinel-js-wrapper",
+  "version": "1.0.0",
+  "description": "sentinel-js-wrapper, the API wrapper for Sentinel",
+
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon main.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^20.10.5",
+    "@types/winreg": "^1.2.36",
+    "axios": "^1.6.3",
+    "chai": "^5.0.0",
+    "crypto-js": "^4.2.0",
+    "gson": "^0.1.5",
+    "moment": "^2.30.1",
+    "nodemon": "^3.0.2",
+    "reflect-metadata": "^0.2.1",
+    "winreg": "^1.2.5"
+  },
+  "devDependencies": {
+    "@types/crypto-js": "^4.2.1"
+  }
+}
