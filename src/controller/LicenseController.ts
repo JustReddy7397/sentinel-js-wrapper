@@ -19,6 +19,7 @@ import KeyAlreadyExistsException from "../exception/KeyAlreadyExistsException";
 import ConnectionAlreadyExistsException from "../exception/ConnectionAlreadyExistsException";
 import LicensePatchData from "../model/LicensePatchData";
 import moment from "moment/moment";
+import Page from "../model/Page";
 
 export default class LicenseController extends Controller {
 
@@ -398,6 +399,31 @@ export default class LicenseController extends Controller {
             default:
                 throw new UnexpectedResponseException(response);
         }
+    }
+
+
+    async test() {
+        return "hello"
+    }
+    async list(product: string, pageIndex: number, elementsPerPage: number) {
+        const builder = new QueryBuilder(this.baseUrl + "/list")
+            .append("product", product)
+            .append("page", pageIndex.toString())
+            .append("size", elementsPerPage.toString());
+
+        const response = await new RequestBuilder()
+            .setMethod(HttpMethod.GET)
+            .setApiKey(this.apiKey || "")
+            .setQuery(builder.build())
+            .build()
+            .getResponse();
+
+        if (response?.getType ===  "SUCCESS") {
+            return Page.fromJson(License, response.getResultString);
+        }
+
+        throw new UnexpectedResponseException(response);
+
     }
 
 }

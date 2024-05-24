@@ -31,6 +31,7 @@ const HttpMethod_1 = require("../http/HttpMethod");
 const KeyAlreadyExistsException_1 = __importDefault(require("../exception/KeyAlreadyExistsException"));
 const ConnectionAlreadyExistsException_1 = __importDefault(require("../exception/ConnectionAlreadyExistsException"));
 const moment_1 = __importDefault(require("moment/moment"));
+const Page_1 = __importDefault(require("../model/Page"));
 class LicenseController extends Controller_1.default {
     constructor(baseUrl, apiKey) {
         super(baseUrl + "/licenses", apiKey);
@@ -385,6 +386,29 @@ class LicenseController extends Controller_1.default {
                 default:
                     throw new UnexpectedResponseException_1.default(response);
             }
+        });
+    }
+    test() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return "hello";
+        });
+    }
+    list(product, pageIndex, elementsPerPage) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const builder = new QueryBuilder_1.default(this.baseUrl + "/list")
+                .append("product", product)
+                .append("page", pageIndex.toString())
+                .append("size", elementsPerPage.toString());
+            const response = yield new RequestBuilder_1.default()
+                .setMethod(HttpMethod_1.HttpMethod.GET)
+                .setApiKey(this.apiKey || "")
+                .setQuery(builder.build())
+                .build()
+                .getResponse();
+            if ((response === null || response === void 0 ? void 0 : response.getType) === "SUCCESS") {
+                return Page_1.default.fromJson(License_1.default, response.getResultString);
+            }
+            throw new UnexpectedResponseException_1.default(response);
         });
     }
 }

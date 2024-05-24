@@ -24,6 +24,8 @@ function fromJson(theClass, json) {
     const constructorSignature = Reflect.getMetadata("design:paramtypes", theClass);
     for (let i = 0; i < keys.length; i++) {
         const objectType = typeof jsonCopy[keys[i]];
+        if (constructorSignature == undefined)
+            continue;
         const constructorType = constructorSignature[i];
         if (objectType === "object" && Reflect.getMetadata("isTsonSerializable", constructorType)) {
             jsonCopy[keys[i]] = fromJson(constructorType, jsonCopy[keys[i]]);

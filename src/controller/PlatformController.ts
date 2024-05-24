@@ -2,7 +2,7 @@ import Controller from "./Controller";
 import RequestBuilder from "../http/RequestBuilder";
 import QueryBuilder from "../util/QueryBuilder";
 import UnexpectedResponseException from "../exception/unchecked/UnexpectedResponseException";
-import Response from "../http/Response";
+
 export default class PlatformController extends Controller {
 
     constructor(baseUrl: string) {
