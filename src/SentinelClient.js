@@ -16,14 +16,15 @@ const PlatformController_1 = __importDefault(require("./controller/PlatformContr
 const ProductController_1 = __importDefault(require("./controller/ProductController"));
 const LicenseController_1 = __importDefault(require("./controller/LicenseController"));
 const Hwid_1 = __importDefault(require("./util/Hwid"));
+const Request_1 = __importDefault(require("./http/Request"));
 const axios_1 = __importDefault(require("axios"));
+const ResponseDecrypter_1 = __importDefault(require("./http/ResponseDecrypter"));
 class SentinelClient {
     constructor(baseUrl, apiKey, secretKey) {
         this.baseUrl = baseUrl;
         this.apiKey = apiKey;
-        this.secretKey = secretKey;
         if (secretKey) {
-            // TODO
+            Request_1.default.setDecrypter(new ResponseDecrypter_1.default(secretKey));
         }
         this.platformController = new PlatformController_1.default(baseUrl);
         this.productController = new ProductController_1.default(baseUrl);

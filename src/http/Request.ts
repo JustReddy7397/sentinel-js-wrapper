@@ -25,7 +25,6 @@ export default class Request {
 
     async getResponse(): Promise<Response | null> {
         let strResponse: string = "";
-
         try {
             let data: AxiosResponse<any> | null = null;
             const headers = {
@@ -74,17 +73,14 @@ export default class Request {
                 if (strResponse.length !== 0) {
                     let decryptedResponse = strResponse;
                     if (Request.decrypter) {
-                        decryptedResponse = Request.decrypter.decrypt(JSON.stringify(strResponse));
+                        decryptedResponse = Request.decrypter.decrypt(strResponse);
                     }
-
-                    const stringyfiedResponse = JSON.stringify(decryptedResponse);
-                    const parsedResponse = JSON.parse(stringyfiedResponse);
+                    const parsedResponse = JSON.parse(decryptedResponse);
                     const timeStamp = parsedResponse["timestamp"];
                     const message = parsedResponse["message"];
                     const status = parsedResponse["status"];
                     const type = parsedResponse["type"];
                     const result = parsedResponse["result"];
-
                     return new Response(status, timeStamp, message, type, result);
                 }
             }
@@ -96,8 +92,8 @@ export default class Request {
         return null;
     }
 
-    set decrypter(decrypter: ResponseDecrypter) {
-        Request.decrypter = decrypter
+    static setDecrypter(decrypter: ResponseDecrypter) {
+        Request.decrypter = decrypter;
     }
 
 

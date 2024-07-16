@@ -2,7 +2,9 @@ import PlatformController from "./controller/PlatformController";
 import ProductController from "./controller/ProductController";
 import LicenseController from "./controller/LicenseController";
 import Hwid from "./util/Hwid";
+import Request from "./http/Request";
 import axios from "axios";
+import ResponseDecrypter from "./http/ResponseDecrypter";
 
 export default class SentinelClient {
 
@@ -13,10 +15,12 @@ export default class SentinelClient {
     constructor(
         private readonly baseUrl: string,
         private readonly apiKey: string,
-        private readonly secretKey?: string,
+        secretKey?: any,
     ) {
         if (secretKey) {
-            // TODO
+            Request.setDecrypter(
+                new ResponseDecrypter(secretKey)
+            );
         }
 
         this.platformController = new PlatformController(baseUrl);

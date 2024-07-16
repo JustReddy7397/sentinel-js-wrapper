@@ -77,10 +77,9 @@ class Request {
                     if (strResponse.length !== 0) {
                         let decryptedResponse = strResponse;
                         if (Request.decrypter) {
-                            decryptedResponse = Request.decrypter.decrypt(JSON.stringify(strResponse));
+                            decryptedResponse = Request.decrypter.decrypt(strResponse);
                         }
-                        const stringyfiedResponse = JSON.stringify(decryptedResponse);
-                        const parsedResponse = JSON.parse(stringyfiedResponse);
+                        const parsedResponse = JSON.parse(decryptedResponse);
                         const timeStamp = parsedResponse["timestamp"];
                         const message = parsedResponse["message"];
                         const status = parsedResponse["status"];
@@ -97,7 +96,7 @@ class Request {
             return null;
         });
     }
-    set decrypter(decrypter) {
+    static setDecrypter(decrypter) {
         Request.decrypter = decrypter;
     }
 }

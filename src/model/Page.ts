@@ -29,7 +29,7 @@ export default class Page<T>  {
         for (const contentElement of contentJson) {
             const jsonCopy = Object.assign({}, contentElement);
             const stringyifiedJson = JSON.stringify(jsonCopy);
-            content.push(fromJson(theClass, JSON.parse(stringyifiedJson)));
+            content.push(JSON.parse(stringyifiedJson));
         }
 
         return new Page<T>(

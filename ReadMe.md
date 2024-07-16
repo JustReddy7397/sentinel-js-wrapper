@@ -12,7 +12,7 @@
 ```bash
 npm install sentinel-wrapper-js@latest
 ```
-> :warning: **The wrapper version is not necessarily the same as your Sentinel server version. For example, the wrapper may be on version 1.0.0 while your server is on version 1.4.0**
+> :warning: **The wrapper version is not necessarily the same as your Sentinel server version. For example, the wrapper may be on version 1.1.0 while your server is on version 1.4.0**
 
 ## Creating a client
 ```javascript

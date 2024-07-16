@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const crypto = __importStar(require("crypto-js"));
+const crypto = __importStar(require("crypto"));
 class ResponseDecrypter {
     constructor(secretKey) {
         this.charset = "UTF-8";
@@ -34,7 +34,15 @@ class ResponseDecrypter {
         this.secretKey = secretKey;
     }
     decrypt(encrypted) {
-        return crypto.AES.decrypt(encrypted, this.secretKey).toString(crypto.enc.Utf8);
+        const encryptedBuffer = Buffer.from(encrypted, 'base64');
+        const key = Buffer.from(this.secretKey, 'base64');
+        const iv = encryptedBuffer.subarray(0, 12);
+        const content = encryptedBuffer.subarray(12);
+        const decipher = crypto.createDecipheriv('aes-256-gcm', key, iv);
+        let decrypted = decipher.update(content);
+        let final = decrypted.toString('utf8');
+        final = final.substring(0, final.lastIndexOf("}") + 1);
+        return final;
     }
 }
 exports.default = ResponseDecrypter;
