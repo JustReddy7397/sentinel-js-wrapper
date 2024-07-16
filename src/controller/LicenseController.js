@@ -133,7 +133,6 @@ class LicenseController extends Controller_1.default {
                 .build())
                 .setBody(newData)
                 .build().getResponse();
-            console.log(response);
             switch (response === null || response === void 0 ? void 0 : response.getType) {
                 case "SUCCESS":
                     return response.getResult("license", License_1.default);
